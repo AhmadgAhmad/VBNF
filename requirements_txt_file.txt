@@ -1,0 +1,35 @@
+# Core dependencies
+torch>=1.9.0
+numpy>=1.21.0
+scipy>=1.7.0
+pandas>=1.3.0
+
+# Machine Learning
+pyro-ppl>=1.8.0
+zuko>=0.1.0
+
+# Visualization
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Progress bars and utilities
+tqdm>=4.62.0
+
+# Optional dependencies (install with pip install -e ".[extra_name]")
+# Development tools (install with pip install -e ".[dev]")
+# pytest>=6.0
+# pytest-cov>=2.0
+# black>=21.0
+# flake8>=3.8
+# isort>=5.0
+# pre-commit>=2.0
+
+# Notebook support (install with pip install -e ".[notebooks]")
+# jupyter>=1.0
+# ipykernel>=6.0
+# notebook>=6.0
+
+# Advanced visualization (install with pip install -e ".[visualization]")
+# plotly>=5.0
+# bokeh>=2.0
+# ipywidgets>=7.0
