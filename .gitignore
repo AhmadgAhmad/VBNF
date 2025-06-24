@@ -49,7 +49,7 @@ venv.bak/
 Thumbs.db
 
 # Project specific
-experiments/
+# experiments/
 results/
 logs/
 *.png
