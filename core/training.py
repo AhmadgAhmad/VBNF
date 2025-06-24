@@ -1,4 +1,4 @@
-# antifragile_calnf/core/training.py
+# antifragile_vbnf/core/training.py
 import torch
 import torch.nn as nn
 import pandas as pd

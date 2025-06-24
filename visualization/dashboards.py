@@ -1,4 +1,4 @@
-# antifragile_calnf/visualization/dashboards.py
+# antifragile_vbnf/visualization/dashboards.py
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
@@ -130,7 +130,7 @@ class AntifragileDashboard:
             
             if len(responses) >= 3:
                 ax.plot(stress_levels[:len(responses)], responses, 
-                       marker='o', label=f'{"A-CALNF" if model_type == "anti" else "Standard CALNF"}',
+                       marker='o', label=f'{"A-vbnf" if model_type == "anti" else "Standard vbnf"}',
                        linewidth=2)
         
         ax.set_xlabel('Stress Level')
@@ -149,7 +149,7 @@ class AntifragileDashboard:
                         # Simulate time series
                         time_points = np.linspace(0, 1, len(trajectory))
                         ax.plot(time_points, trajectory, 
-                               marker='o', label=f'{"A-CALNF" if model_type == "anti" else "Standard CALNF"}',
+                               marker='o', label=f'{"A-vbnf" if model_type == "anti" else "Standard vbnf"}',
                                linewidth=2)
         
         ax.set_xlabel('Time')
@@ -172,7 +172,7 @@ class AntifragileDashboard:
         for model_type in ['std', 'anti']:
             if model_type in all_run_metrics['jensen_gap']:
                 data_to_plot.append(all_run_metrics['jensen_gap'][model_type])
-                labels.append('Standard CALNF' if model_type == 'std' else 'A-CALNF')
+                labels.append('Standard vbnf' if model_type == 'std' else 'A-vbnf')
         
         if data_to_plot:
             box_plot = ax.boxplot(data_to_plot, labels=labels, patch_artist=True)
@@ -348,8 +348,8 @@ class AdvancedVisualizationDashboard:
         df = pd.DataFrame(volatility_data)
         
         fig, ax = plt.subplots(figsize=(10, 6))
-        ax.plot(df['volatility'], df['std_jensen_gap'], 'b-', marker='o', label='Standard CALNF')
-        ax.plot(df['volatility'], df['anti_jensen_gap'], 'r-', marker='s', label='Antifragile CALNF')
+        ax.plot(df['volatility'], df['std_jensen_gap'], 'b-', marker='o', label='Standard vbnf')
+        ax.plot(df['volatility'], df['anti_jensen_gap'], 'r-', marker='s', label='Antifragile vbnf')
         ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
         
         # Shade regions where each model benefits from volatility
@@ -403,9 +403,9 @@ class AdvancedVisualizationDashboard:
         # Plot convexity maps
         fig, axs = plt.subplots(1, 3, figsize=(18, 6))
         
-        # Standard CALNF convexity
+        # Standard vbnf convexity
         im0 = axs[0].imshow(std_matrix, cmap='RdBu', origin='lower')
-        axs[0].set_title('Standard CALNF Convexity')
+        axs[0].set_title('Standard vbnf Convexity')
         axs[0].set_xlabel('Context Value')
         axs[0].set_ylabel('Context Value')
         axs[0].set_xticks(np.arange(n_contexts))
@@ -414,9 +414,9 @@ class AdvancedVisualizationDashboard:
         axs[0].set_yticklabels([f'{c:.1f}' for c in contexts])
         fig.colorbar(im0, ax=axs[0])
         
-        # Antifragile CALNF convexity
+        # Antifragile vbnf convexity
         im1 = axs[1].imshow(anti_matrix, cmap='RdBu', origin='lower')
-        axs[1].set_title('Antifragile CALNF Convexity')
+        axs[1].set_title('Antifragile vbnf Convexity')
         axs[1].set_xlabel('Context Value')
         axs[1].set_xticklabels([f'{c:.1f}' for c in contexts])
         axs[1].set_yticks(np.arange(n_contexts))
@@ -444,8 +444,8 @@ class AdvancedVisualizationDashboard:
         
         # Variance plot
         ax1 = axs[0]
-        ax1.plot(df['context'], df['std_variance'], 'b-', marker='o', label='Standard CALNF')
-        ax1.plot(df['context'], df['anti_variance'], 'r-', marker='s', label='Antifragile CALNF')
+        ax1.plot(df['context'], df['std_variance'], 'b-', marker='o', label='Standard vbnf')
+        ax1.plot(df['context'], df['anti_variance'], 'r-', marker='s', label='Antifragile vbnf')
         ax1.set_title('Variance Across Context Values')
         ax1.set_xlabel('Context Value')
         ax1.set_ylabel('Variance')
@@ -493,8 +493,8 @@ class AdvancedVisualizationDashboard:
         # Add average lines
         avg_std = df.groupby('steps')['std_recovery_pct'].mean()
         avg_anti = df.groupby('steps')['anti_recovery_pct'].mean()
-        axs[0].plot(avg_std.index, avg_std.values, 'b-', marker='o', linewidth=3, label='Standard CALNF Avg')
-        axs[0].plot(avg_anti.index, avg_anti.values, 'r-', marker='s', linewidth=3, label='Antifragile CALNF Avg')
+        axs[0].plot(avg_std.index, avg_std.values, 'b-', marker='o', linewidth=3, label='Standard vbnf Avg')
+        axs[0].plot(avg_anti.index, avg_anti.values, 'r-', marker='s', linewidth=3, label='Antifragile vbnf Avg')
         
         axs[0].set_title('Recovery Progress After Perturbation')
         axs[0].set_xlabel('Fine-tuning Steps')

@@ -1,15 +1,15 @@
-# Project Structure for Antifragile CALNF
+# Project Structure for Antifragile vbnf
 
 # Directory structure:
 """
-antifragile_calnf/
+antifragile_vbnf/
 ├── setup.py
 ├── requirements.txt
 ├── config.py
 ├── main.py
 ├── README.md
 ├── USAGE_GUIDE.md
-├── antifragile_calnf/
+├── antifragile_vbnf/
 │   ├── __init__.py
 │   ├── data/
 │   │   ├── __init__.py
@@ -36,7 +36,7 @@ antifragile_calnf/
 │   └── experiments/
 │       ├── __init__.py
 │       ├── banana_experiment.py
-│       └── stress_experiments.py
+│       └─ stress_experiments.py
 """
 
 # setup.py
@@ -44,7 +44,7 @@ setup_content = '''
 from setuptools import setup, find_packages
 
 setup(
-    name="antifragile_calnf",
+    name="antifragile_vbnf",
     version="0.1.0",
     packages=find_packages(),
     install_requires=[
@@ -79,7 +79,7 @@ zuko>=0.1.0
 
 # README.md
 readme_content = '''
-# Antifragile CALNF
+# Antifragile vbnf
 
 Antifragile Conditional Autoregressive Latent Normalizing Flows - A framework for training normalizing flows that benefit from volatility and stress.
 
@@ -94,7 +94,7 @@ Antifragile Conditional Autoregressive Latent Normalizing Flows - A framework fo
 ## Quick Start
 
 ```python
-from antifragile_calnf import run_banana_experiment
+from antifragile_vbnf import run_banana_experiment
 
 # Run the classic banana experiment
 results = run_banana_experiment()

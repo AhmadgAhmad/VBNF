@@ -1,4 +1,4 @@
-# antifragile_calnf/data/generators.py
+# antifragile_vbnf/data/generators.py
 import numpy as np
 import pandas as pd
 import torch

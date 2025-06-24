@@ -1,4 +1,4 @@
-# antifragile_calnf/analysis/antifragile_analysis.py
+# antifragile_vbnf/analysis/antifragile_analysis.py
 import numpy as np
 from typing import Dict, List, Any
 from .statistics import StatisticalAnalyzer
@@ -213,9 +213,9 @@ class AntifragileAnalyzer:
         print(f"Success rate: {core_successes/max(len(core_metrics), 1)*100:.1f}%")
         
         if core_successes >= len(core_metrics) * 0.5:
-            print("✅ CONCLUSION: A-CALNF demonstrates significant antifragile properties")
+            print("✅ CONCLUSION: A-vbnf demonstrates significant antifragile properties")
         elif core_successes > 0:
-            print("⚠️  CONCLUSION: A-CALNF shows partial antifragile benefits")
+            print("⚠️  CONCLUSION: A-vbnf shows partial antifragile benefits")
         else:
             print("❌ CONCLUSION: No clear antifragile benefits detected")
         

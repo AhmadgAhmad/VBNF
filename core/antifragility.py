@@ -1,4 +1,4 @@
-# antifragile_calnf/core/antifragility.py
+# antifragile_vbnf/core/antifragility.py
 import torch
 import numpy as np
 from typing import List, Dict, Tuple, Optional

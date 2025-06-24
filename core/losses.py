@@ -1,4 +1,4 @@
-# antifragile_calnf/core/losses.py
+# antifragile_vbnf/core/losses.py
 import torch
 import torch.nn as nn
 from typing import List, Tuple, Dict

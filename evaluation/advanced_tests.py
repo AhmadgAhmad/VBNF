@@ -1,4 +1,4 @@
-# antifragile_calnf/evaluation/advanced_tests.py
+# antifragile_vbnf/evaluation/advanced_tests.py
 import torch
 import numpy as np
 from typing import Dict, List

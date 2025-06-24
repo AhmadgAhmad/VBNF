@@ -2,13 +2,13 @@
 import argparse
 import sys
 from config import get_config
-from antifragile_calnf.experiments.banana_experiment import run_banana_experiment
-from antifragile_calnf.experiments.stress_experiments import run_all_stress_tests, run_multiple_experiments
-from antifragile_calnf.analysis.antifragile_analysis import AntifragileExperimentRunner
+from experiments.banana_experiment import run_banana_experiment
+from experiments.stress_experiments import run_all_stress_tests, run_multiple_experiments
+from analysis.antifragile_analysis import AntifragileExperimentRunner
 
 def main():
-    """Main entry point for the antifragile CALNF experiments."""
-    parser = argparse.ArgumentParser(description='Antifragile CALNF Experiments')
+    """Main entry point for the antifragile vbnf experiments."""
+    parser = argparse.ArgumentParser(description='Antifragile vbnf Experiments')
     
     parser.add_argument('--experiment', type=str, default='banana',
                        choices=['banana', 'stress_test', 'antifragile_focused', 'multiple_runs'],
@@ -93,9 +93,9 @@ if __name__ == "__main__":
     main()
 
 
-# antifragile_calnf/__init__.py
+# antifragile_vbnf/__init__.py
 """
-Antifragile Conditional Autoregressive Latent Normalizing Flows (A-CALNF)
+Antifragile Conditional Autoregressive Latent Normalizing Flows (A-vbnf)
 
 A comprehensive framework for training and evaluating antifragile normalizing flows
 that benefit from volatility and stress rather than being harmed by them.
@@ -116,7 +116,7 @@ from .visualization.dashboards import create_antifragile_visualizations
 from .experiments.banana_experiment import run_banana_experiment
 from .experiments.stress_experiments import run_all_stress_tests, run_multiple_experiments
 
-# Define what gets imported with "from antifragile_calnf import *"
+# Define what gets imported with "from antifragile_vbnf import *"
 __all__ = [
     # Data generation
     'generate_banana_dataset',
@@ -149,8 +149,8 @@ __all__ = [
 ]
 
 
-# antifragile_calnf/data/__init__.py
-"""Data generation utilities for antifragile CALNF experiments."""
+# antifragile_vbnf/data/__init__.py
+"""Data generation utilities for antifragile vbnf experiments."""
 
 from .generators import (
     generate_banana_dataset,
@@ -167,7 +167,7 @@ __all__ = [
 ]
 
 
-# antifragile_calnf/core/__init__.py
+# antifragile_vbnf/core/__init__.py
 """Core training and antifragility components."""
 
 from .training import train_flow, train_flow_antifragile_centered, FlowTrainer
@@ -184,7 +184,7 @@ __all__ = [
 ]
 
 
-# antifragile_calnf/evaluation/__init__.py
+# antifragile_vbnf/evaluation/__init__.py
 """Evaluation and testing utilities."""
 
 from .stress_tests import StressTester
@@ -197,7 +197,7 @@ except ImportError:
     __all__ = ['StressTester', 'AdvancedAntifragilityTester']
 
 
-# antifragile_calnf/analysis/__init__.py
+# antifragile_vbnf/analysis/__init__.py
 """Analysis and statistics utilities."""
 
 from .statistics import StatisticalAnalyzer, extract_metric_values, compute_antifragile_stats
@@ -219,7 +219,7 @@ __all__ = [
 ]
 
 
-# antifragile_calnf/visualization/__init__.py
+# antifragile_vbnf/visualization/__init__.py
 """Visualization utilities."""
 
 from .plots import FlowVisualizer, StressTestVisualizer, plot_flow_samples, visualize_stress_test_results
@@ -235,7 +235,7 @@ __all__ = [
 ]
 
 
-# antifragile_calnf/experiments/__init__.py
+# antifragile_vbnf/experiments/__init__.py
 """Experiment runners and utilities."""
 
 from .banana_experiment import BananaExperiment, run_banana_experiment

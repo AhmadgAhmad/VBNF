@@ -1,4 +1,4 @@
-# antifragile_calnf/evaluation/performance.py
+# antifragile_vbnf/evaluation/performance.py
 import torch
 import numpy as np
 from typing import Tuple, List
@@ -97,7 +97,7 @@ class PerformanceEvaluator:
         return risk_measures
     
     def compare_with_traditional_risk_measures(self, standard_flow, antifragile_flow) -> dict:
-        """Compare antifragile CALNF with traditional risk measures."""
+        """Compare antifragile vbnf with traditional risk measures."""
         context_values = [0.0, 0.25, 0.5, 0.75, 1.0]
         
         # Calculate risk measures for both models

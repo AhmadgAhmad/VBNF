@@ -1,4 +1,4 @@
-# antifragile_calnf/analysis/statistics.py
+# antifragile_vbnf/analysis/statistics.py
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -265,9 +265,9 @@ class StatisticalAnalyzer:
         
         # Determine which method is better
         if anti_mean > std_mean:
-            better_method = "A-CALNF"
+            better_method = "A-vbnf"
         else:
-            better_method = "Standard CALNF"
+            better_method = "Standard vbnf"
         
         return {
             'metric': metric_name,
@@ -283,11 +283,11 @@ class StatisticalAnalyzer:
     
     def generate_summary_report(self, stats_results: List[Dict]) -> str:
         """Generate a comprehensive summary report."""
-        significant_improvements = [r for r in stats_results if r['is_significant'] and r['better_method'] == 'A-CALNF']
-        significant_deteriorations = [r for r in stats_results if r['is_significant'] and r['better_method'] == 'Standard CALNF']
+        significant_improvements = [r for r in stats_results if r['is_significant'] and r['better_method'] == 'A-vbnf']
+        significant_deteriorations = [r for r in stats_results if r['is_significant'] and r['better_method'] == 'Standard vbnf']
         
         report = f"""
-ANTIFRAGILE CALNF PERFORMANCE ANALYSIS
+ANTIFRAGILE vbnf PERFORMANCE ANALYSIS
 =====================================
 
 Total Metrics Tested: {len(stats_results)}
@@ -301,8 +301,8 @@ DETAILED RESULTS:
 """
         
         for result in stats_results:
-            status = "✅" if result['is_significant'] and result['better_method'] == 'A-CALNF' else \
-                    "❌" if result['is_significant'] and result['better_method'] == 'Standard CALNF' else "➖"
+            status = "✅" if result['is_significant'] and result['better_method'] == 'A-vbnf' else \
+                    "❌" if result['is_significant'] and result['better_method'] == 'Standard vbnf' else "➖"
             
             report += f"{status} {result['metric']:<25} | Improvement: {result['improvement']:+6.2f}% | p-value: {result['p_value']:.4f}\n"
         

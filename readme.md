@@ -1,4 +1,4 @@
-# Antifragile CALNF
+# Antifragile vbnf
 
 **Antifragile Conditional Autoregressive Latent Normalizing Flows**
 
@@ -10,7 +10,7 @@
 
 ## 🎯 Overview
 
-Antifragile CALNF implements Nassim Taleb's concept of antifragility in normalizing flows - creating models that don't just survive volatility and stress, but actually **improve** from it. Unlike traditional robust models that merely resist perturbations, antifragile models gain strength from disorder.
+Antifragile vbnf implements Nassim Taleb's concept of antifragility in normalizing flows - creating models that don't just survive volatility and stress, but actually **improve** from it. Unlike traditional robust models that merely resist perturbations, antifragile models gain strength from disorder.
 
 ### Key Features
 
@@ -26,15 +26,15 @@ Antifragile CALNF implements Nassim Taleb's concept of antifragility in normaliz
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/antifragile-calnf.git
-cd antifragile-calnf
+git clone https://github.com/yourusername/antifragile-vbnf.git
+cd antifragile-vbnf
 pip install -e .
 ```
 
 ### Basic Usage
 
 ```python
-from antifragile_calnf import run_banana_experiment
+from antifragile_vbnf import run_banana_experiment
 
 # Run the classic banana experiment
 results = run_banana_experiment()
@@ -69,7 +69,7 @@ python main.py --experiment banana --config custom_config.json --device cuda
 ### Architecture
 
 ```
-antifragile_calnf/
+antifragile_vbnf/
 ├── data/           # Data generation and augmentation
 ├── core/           # Training algorithms and antifragile loss functions  
 ├── evaluation/     # Stress testing and performance evaluation
@@ -92,7 +92,7 @@ antifragile_calnf/
 Classic antifragile demonstration on horizontally-shifted semicircular data:
 
 ```python
-from antifragile_calnf.experiments import BananaExperiment
+from antifragile_vbnf.experiments import BananaExperiment
 from config import get_config
 
 experiment = BananaExperiment(get_config('banana'))
@@ -106,7 +106,7 @@ print(f"Antifragility ratio: {results['convexity']['ratio']:.3f}")
 Comprehensive evaluation across multiple stress scenarios:
 
 ```python
-from antifragile_calnf.evaluation import StressTester
+from antifragile_vbnf.evaluation import StressTester
 
 tester = StressTester()
 results = tester.run_all_stress_tests(standard_flow, antifragile_flow, 
@@ -125,7 +125,7 @@ results = tester.run_all_stress_tests(standard_flow, antifragile_flow,
 Multi-run statistical validation with significance testing:
 
 ```python
-from antifragile_calnf.experiments import run_multiple_experiments
+from antifragile_vbnf.experiments import run_multiple_experiments
 
 all_metrics, stats_results = run_multiple_experiments(
     num_runs=50, save_results=True
@@ -138,7 +138,7 @@ all_metrics, stats_results = run_multiple_experiments(
 ## 📊 Sample Results
 
 ![Banana Experiment](docs/images/banana_comparison.png)
-*Comparison of standard vs antifragile CALNF on banana-shaped data*
+*Comparison of standard vs antifragile vbnf on banana-shaped data*
 
 ![Stress Test Results](docs/images/stress_test_dashboard.png)
 *Comprehensive stress testing dashboard showing antifragile benefits*
@@ -148,7 +148,7 @@ all_metrics, stats_results = run_multiple_experiments(
 ### Custom Training
 
 ```python
-from antifragile_calnf.core import FlowTrainer, AntifragileLossCalculator
+from antifragile_vbnf.core import FlowTrainer, AntifragileLossCalculator
 import zuko
 
 # Create custom trainer
@@ -164,7 +164,7 @@ trained_flow, losses = trainer.train_flow_antifragile_centered(
 ### Custom Stress Tests
 
 ```python
-from antifragile_calnf.evaluation import AdvancedAntifragilityTester
+from antifragile_vbnf.evaluation import AdvancedAntifragilityTester
 
 # Create custom stress tester
 tester = AdvancedAntifragilityTester()
@@ -211,8 +211,8 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 ### Development Setup
 
 ```bash
-git clone https://github.com/yourusername/antifragile-calnf.git
-cd antifragile-calnf
+git clone https://github.com/yourusername/antifragile-vbnf.git
+cd antifragile-vbnf
 pip install -e ".[dev]"
 pre-commit install
 ```
@@ -221,7 +221,7 @@ pre-commit install
 
 ```bash
 pytest tests/
-python -m pytest tests/ --cov=antifragile_calnf --cov-report=html
+python -m pytest tests/ --cov=antifragile_vbnf --cov-report=html
 ```
 
 ## 📚 Citation
@@ -229,11 +229,11 @@ python -m pytest tests/ --cov=antifragile_calnf --cov-report=html
 If you use this code in your research, please cite:
 
 ```bibtex
-@software{antifragile_calnf2024,
+@software{antifragile_vbnf2024,
   title={Antifragile Conditional Autoregressive Latent Normalizing Flows},
   author={Your Name},
   year={2024},
-  url={https://github.com/yourusername/antifragile-calnf}
+  url={https://github.com/yourusername/antifragile-vbnf}
 }
 ```
 

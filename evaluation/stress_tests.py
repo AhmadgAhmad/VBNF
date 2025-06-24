@@ -1,4 +1,4 @@
-# antifragile_calnf/evaluation/stress_tests.py
+# antifragile_vbnf/evaluation/stress_tests.py
 import torch
 import numpy as np
 from typing import Dict, List, Tuple

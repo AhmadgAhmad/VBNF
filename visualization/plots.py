@@ -1,4 +1,4 @@
-# antifragile_calnf/visualization/plots.py
+# antifragile_vbnf/visualization/plots.py
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
@@ -108,8 +108,8 @@ class FlowVisualizer:
         """Plot performance comparison under disruption."""
         fig, ax = plt.subplots(figsize=figsize)
         
-        ax.plot(std_magnitudes, std_log_probs, 'b-', label="Standard CALNF", linewidth=2)
-        ax.plot(anti_magnitudes, anti_log_probs, 'r-', label="Antifragile CALNF", linewidth=2)
+        ax.plot(std_magnitudes, std_log_probs, 'b-', label="Standard vbnf", linewidth=2)
+        ax.plot(anti_magnitudes, anti_log_probs, 'r-', label="Antifragile vbnf", linewidth=2)
         
         # Fit polynomial to highlight convexity/concavity
         std_poly = np.polyfit(std_magnitudes, std_log_probs, 2)
@@ -152,8 +152,8 @@ class StressTestVisualizer:
         # Horizontal shift
         if 'horizontal_shift' in results:
             df = pd.DataFrame(results['horizontal_shift'])
-            axs[0].plot(df['shift'], df['std_log_prob'], 'b-', marker='o', label='Standard CALNF')
-            axs[0].plot(df['shift'], df['anti_log_prob'], 'r-', marker='s', label='Antifragile CALNF')
+            axs[0].plot(df['shift'], df['std_log_prob'], 'b-', marker='o', label='Standard vbnf')
+            axs[0].plot(df['shift'], df['anti_log_prob'], 'r-', marker='s', label='Antifragile vbnf')
             axs[0].set_title('Performance Under Horizontal Shift')
             axs[0].set_xlabel('Shift Magnitude')
             axs[0].set_ylabel('Log Probability')
@@ -163,8 +163,8 @@ class StressTestVisualizer:
         # Noise variation
         if 'noise_variation' in results:
             df = pd.DataFrame(results['noise_variation'])
-            axs[1].plot(df['noise'], df['std_log_prob'], 'b-', marker='o', label='Standard CALNF')
-            axs[1].plot(df['noise'], df['anti_log_prob'], 'r-', marker='s', label='Antifragile CALNF')
+            axs[1].plot(df['noise'], df['std_log_prob'], 'b-', marker='o', label='Standard vbnf')
+            axs[1].plot(df['noise'], df['anti_log_prob'], 'r-', marker='s', label='Antifragile vbnf')
             axs[1].set_title('Performance Under Increasing Noise')
             axs[1].set_xlabel('Noise Level')
             axs[1].set_ylabel('Log Probability')
@@ -174,8 +174,8 @@ class StressTestVisualizer:
         # Shape deformation
         if 'shape_deformation' in results:
             df = pd.DataFrame(results['shape_deformation'])
-            axs[2].plot(df['ratio'], df['std_log_prob'], 'b-', marker='o', label='Standard CALNF')
-            axs[2].plot(df['ratio'], df['anti_log_prob'], 'r-', marker='s', label='Antifragile CALNF')
+            axs[2].plot(df['ratio'], df['std_log_prob'], 'b-', marker='o', label='Standard vbnf')
+            axs[2].plot(df['ratio'], df['anti_log_prob'], 'r-', marker='s', label='Antifragile vbnf')
             axs[2].set_title('Performance Under Shape Deformation')
             axs[2].set_xlabel('Deformation Ratio')
             axs[2].set_ylabel('Log Probability')
@@ -193,8 +193,8 @@ class StressTestVisualizer:
         # Single outlier
         if 'single_outlier' in results:
             df = pd.DataFrame(results['single_outlier'])
-            axs[0].plot(df['magnitude'], df['std_impact_pct'], 'b-', marker='o', label='Standard CALNF')
-            axs[0].plot(df['magnitude'], df['anti_impact_pct'], 'r-', marker='s', label='Antifragile CALNF')
+            axs[0].plot(df['magnitude'], df['std_impact_pct'], 'b-', marker='o', label='Standard vbnf')
+            axs[0].plot(df['magnitude'], df['anti_impact_pct'], 'r-', marker='s', label='Antifragile vbnf')
             axs[0].set_title('Impact of Single Extreme Outlier')
             axs[0].set_xlabel('Outlier Magnitude')
             axs[0].set_ylabel('Impact on Log Probability (%)')
@@ -204,8 +204,8 @@ class StressTestVisualizer:
         # Outlier cluster
         if 'outlier_cluster' in results:
             df = pd.DataFrame(results['outlier_cluster'])
-            axs[1].plot(df['cluster_size'], df['std_impact_pct'], 'b-', marker='o', label='Standard CALNF')
-            axs[1].plot(df['cluster_size'], df['anti_impact_pct'], 'r-', marker='s', label='Antifragile CALNF')
+            axs[1].plot(df['cluster_size'], df['std_impact_pct'], 'b-', marker='o', label='Standard vbnf')
+            axs[1].plot(df['cluster_size'], df['anti_impact_pct'], 'r-', marker='s', label='Antifragile vbnf')
             axs[1].set_title('Impact of Outlier Clusters')
             axs[1].set_xlabel('Cluster Size')
             axs[1].set_ylabel('Impact on Log Probability (%)')
@@ -223,8 +223,8 @@ class StressTestVisualizer:
         # Distribution drift
         if 'distribution_drift' in results:
             df = pd.DataFrame(results['distribution_drift'])
-            axs[0].plot(df['t'], df['std_log_prob'], 'b-', marker='o', label='Standard CALNF')
-            axs[0].plot(df['t'], df['anti_log_prob'], 'r-', marker='s', label='Antifragile CALNF')
+            axs[0].plot(df['t'], df['std_log_prob'], 'b-', marker='o', label='Standard vbnf')
+            axs[0].plot(df['t'], df['anti_log_prob'], 'r-', marker='s', label='Antifragile vbnf')
             axs[0].set_title('Performance Under Progressive Distribution Drift')
             axs[0].set_xlabel('Drift Parameter')
             axs[0].set_ylabel('Log Probability')
@@ -234,8 +234,8 @@ class StressTestVisualizer:
         # Oscillating environment
         if 'oscillation' in results:
             df = pd.DataFrame(results['oscillation'])
-            axs[1].plot(df['step'], df['std_log_prob'], 'b-', marker='o', label='Standard CALNF')
-            axs[1].plot(df['step'], df['anti_log_prob'], 'r-', marker='s', label='Antifragile CALNF')
+            axs[1].plot(df['step'], df['std_log_prob'], 'b-', marker='o', label='Standard vbnf')
+            axs[1].plot(df['step'], df['anti_log_prob'], 'r-', marker='s', label='Antifragile vbnf')
             axs[1].set_title('Performance Under Oscillating Environment')
             axs[1].set_xlabel('Step')
             axs[1].set_ylabel('Log Probability')
@@ -258,7 +258,7 @@ class StressTestVisualizer:
         
         bars = ax.bar(categories, values, color=colors, alpha=0.7)
         ax.axhline(y=0, color='black', linestyle='-', alpha=0.3)
-        ax.set_title('Relative Improvement of Antifragile CALNF vs Standard CALNF')
+        ax.set_title('Relative Improvement of Antifragile vbnf vs Standard vbnf')
         ax.set_xlabel('Test Category')
         ax.set_ylabel('Relative Improvement (%)')
         ax.tick_params(axis='x', rotation=45)
