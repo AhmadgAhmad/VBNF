@@ -15,7 +15,7 @@ class DataConfig:
 @dataclass
 class TrainingConfig:
     """Configuration for training."""
-    num_steps: int = 800
+    num_steps: int = 1500
     lr: float = 1e-3
     subsets: int = 5
     context_dim: int = 1
