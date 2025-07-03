@@ -1,7 +1,7 @@
 # antifragile_vbnf/analysis/antifragile_analysis.py
 import numpy as np
 from typing import Dict, List, Any
-from .statistics import StatisticalAnalyzer
+from analysis.statistics import StatisticalAnalyzer
 
 class AntifragileAnalyzer:
     """Specialized analyzer for antifragile-specific metrics and hypotheses."""

@@ -4,8 +4,8 @@ import torch.nn as nn
 import pandas as pd
 from tqdm import tqdm
 from typing import Tuple, List, Dict, Optional
-from .antifragility import AntifragilityCalculator, AdaptiveWeightCalculator
-from .losses import AntifragileLossCalculator
+from core.antifragility import AntifragilityCalculator, AdaptiveWeightCalculator
+from core.losses import AntifragileLossCalculator
 
 class FlowTrainer:
     """Main trainer class for normalizing flows with antifragile capabilities."""
@@ -135,12 +135,38 @@ class FlowTrainer:
             losses.append(loss_record)
             
             # Update progress bar
+            # pbar.set_description(
+            #     f"Step {step} | Total: {total_loss.item():.3f} | "
+            #     f"Base: {loss_components['base_loss'].item():.3f} | "
+            #     f"Volatility: {loss_components['volatility_gain'].item():.3f} | "
+            #     f"Progressive: {loss_components['progressive_gain'].item():.3f}"
+            # )
             pbar.set_description(
                 f"Step {step} | Total: {total_loss.item():.3f} | "
-                f"Base: {loss_components['base_loss'].item():.3f} | "
-                f"Volatility: {loss_components['volatility_gain'].item():.3f} | "
-                f"Progressive: {loss_components['progressive_gain'].item():.3f}"
+                f"Strcl_loss: {loss_components['structural_loss'].item():.3f} | "
+                f"Volatility: {loss_components['volatility_benefit'].item():.3f} | "
+                f"antifragile_g: {loss_components['antifragile_gain'].item():.3f} | "
+                f"fragility_h: {loss_components['fragility_heuristic'].item():.3f} "
+                f"Cvxty_rspns: {loss_components['convex_response'].item():.3f}"
             )
+        # return total_loss, {
+        #     'structural_loss': structural_loss.item(),
+        #     'left_tail_robustness': left_tail_robustness.item(),
+        #     'volatility_benefit': volatility_benefit.item(),
+        #     'convex_response': convex_response.item(),
+        #     'fragility_heuristic': fragility_heuristic.item(),
+        #     'antifragile_gain': antifragile_gain.item()
+        # }
+    
+        # return total_loss, {
+        #     'base_loss': base_loss,
+        #     'volatility_gain': volatility_gain,
+        #     'progressive_gain': progressive_gain,
+        #     'tail_preparedness': tail_preparedness,
+        #     'diversity_gain': diversity_gain,
+        #     'stress_response': stress_response,
+        #     'total_antifragile_gain': total_antifragile_gain
+        # }
         
         return flow, pd.DataFrame(losses)
     

@@ -1,6 +1,6 @@
 # Antifragile vbnf
 
-**Antifragile Conditional Autoregressive Latent Normalizing Flows**
+**Antifragile Volatility Benefiting Normalizing Flows**
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.9+-red.svg)](https://pytorch.org/)
