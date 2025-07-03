@@ -2,7 +2,7 @@
 import torch
 import numpy as np
 from typing import Dict, List, Tuple
-from ..data.generators import generate_semicircle
+from data.generators import generate_semicircle
 
 class StressTester:
     """Main class for conducting stress tests on trained models."""

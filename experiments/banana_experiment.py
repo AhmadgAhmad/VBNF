@@ -6,11 +6,11 @@ import seaborn as sns
 import zuko
 from typing import Dict, Any #
 
-from ..data.generators import generate_banana_dataset, generate_semicircle
-from ..core.training import train_flow, train_flow_antifragile_centered
-from ..evaluation.performance import evaluate_performance_under_disruption
-from ..visualization.plots import plot_flow_samples
-
+from data.generators import generate_banana_dataset, generate_semicircle
+from core.training import train_flow, train_flow_antifragile_centered
+from evaluation.performance import evaluate_performance_under_disruption
+from visualization.plots import plot_flow_samples
+from evaluation.antifragile_testing_suite import run_antifragile_tests
 class BananaExperiment:
     """Main experiment class for banana-shaped data."""
     
@@ -94,6 +94,26 @@ class BananaExperiment:
         print(f"Antifragile model convexity: {anti_convexity:.4f}")
         print(f"Antifragility ratio: {anti_convexity/std_convexity:.4f}")
         
+
+        print("\nRunning antifragile testing suite for antifragile vbnf...")
+
+        _ = run_antifragile_tests(
+                        trained_flow=antifragile_flow,
+                        nominal_data=nominal_data, 
+                        target_data=target_data,
+                        context_dim=1
+                    )
+        
+        print("\nRunning antifragile testing suite for standard vbnf...")
+
+        _ = run_antifragile_tests(
+                        trained_flow=standard_flow,
+                        nominal_data=nominal_data, 
+                        target_data=target_data,
+                        context_dim=1
+                    )
+
+
         return {
             'standard_flow': standard_flow,
             'antifragile_flow': antifragile_flow,
@@ -171,8 +191,8 @@ class BananaExperiment:
         
         # Plot antifragile loss component
         ax = axs[0, 1]
-        if 'antifragile_loss' in antifragile_losses.columns:
-            ax.plot(antifragile_losses['step'], antifragile_losses['antifragile_loss'], label='Antifragile Term')
+        if 'antifragile_gain' in antifragile_losses.columns:
+            ax.plot(antifragile_losses['step'], antifragile_losses['antifragile_gain'], label='Antifragile Term')
         elif 'volatility_gain' in antifragile_losses.columns:
             ax.plot(antifragile_losses['step'], antifragile_losses['volatility_gain'], label='Volatility Gain')
         ax.set_title("Antifragile Loss Component")

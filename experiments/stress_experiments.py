@@ -4,12 +4,12 @@ import numpy as np
 import pyro
 from typing import Dict, List, Tuple
 
-from ..evaluation.stress_tests import StressTester
-from ..data.generators import generate_banana_dataset
-from ..core.training import train_flow, train_flow_antifragile_centered
-from ..analysis.statistics import StatisticalAnalyzer
-from ..analysis.antifragile_analysis import AntifragileAnalyzer
-from ..visualization.dashboards import create_antifragile_visualizations
+from evaluation.stress_tests import StressTester
+from data.generators import generate_banana_dataset
+from core.training import train_flow, train_flow_antifragile_centered
+from analysis.statistics import StatisticalAnalyzer
+from analysis.antifragile_analysis import AntifragileAnalyzer
+from visualization.dashboards import create_antifragile_visualizations
 import zuko
 
 class StressExperimentRunner:
